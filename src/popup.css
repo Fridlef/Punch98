@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+body {
+  display: inline-block;
+  user-select: none;
+}
+
+#popup {
+  display: inline-block;
+  background: #ffffe1;
+  border: 1px solid #000;
+  padding: 2px 6px;
+  color: #000;
+  font-family: "MS Sans Serif", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: none;
+}

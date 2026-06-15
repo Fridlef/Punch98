@@ -1,0 +1,50 @@
+{
+  "name": "punch98",
+  "version": "0.1.0",
+  "description": "Punch98 Electron desktop app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --win portable"
+  },
+  "keywords": [
+    "electron",
+    "windows-98",
+    "98.css"
+  ],
+  "author": "",
+  "license": "MIT",
+  "build": {
+    "appId": "com.punch98.app",
+    "productName": "Punch98",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist{,/**}",
+      "!.git{,/**}",
+      "!.vscode{,/**}",
+      "!package-lock.json",
+      "!*.log"
+    ],
+    "win": {
+      "icon": "assets/punch98.ico",
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "${productName}-portable-${version}.${ext}"
+    }
+  },
+  "dependencies": {
+    "98.css": "^0.1.20"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  }
+}

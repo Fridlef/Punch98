@@ -1,0 +1,312 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #c0c0c0;
+}
+
+.app-shell {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.window-shell {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  padding: 3px;
+}
+
+.title-bar {
+  min-height: 18px;
+  padding: 2px 3px 2px 3px;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.title-bar-controls {
+  -webkit-app-region: no-drag;
+}
+
+.title-bar-controls button {
+  -webkit-app-region: no-drag;
+}
+
+.shell-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  margin: 4px;
+  min-height: 0;
+}
+
+.dialog-panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+menu[role="tablist"] > li {
+  flex: 0 0 95px;
+  text-align: center;
+}
+
+menu[role="tablist"] > li > a {
+  white-space: nowrap;
+}
+
+.tab-frame {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.tab-frame-body {
+  display: flex;
+  flex: 1;
+  margin: 5px;
+  min-height: 0;
+  padding: 6px;
+}
+
+.tab-panel {
+  display: none;
+  flex: 1;
+  min-height: 0;
+}
+
+.tab-panel.is-active {
+  display: flex;
+}
+
+.tab-panel fieldset,
+.advanced-settings {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  min-height: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.shortcut-group {
+  align-self: flex-start;
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 12px 12px 10px;
+  width: 360px;
+}
+
+.time-group,
+.file-group {
+  align-self: flex-start;
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 12px 12px 10px;
+  width: 428px;
+}
+
+.shortcut-grid {
+  align-items: center;
+  column-gap: 18px;
+  display: grid;
+  grid-template-columns: 80px 132px;
+  justify-content: start;
+  padding: 3px 2px 4px 8px;
+  row-gap: 10px;
+}
+
+.time-grid,
+.file-grid {
+  align-items: center;
+  column-gap: 18px;
+  display: grid;
+  grid-template-columns: 80px auto;
+  justify-content: start;
+  padding: 3px 2px 4px 8px;
+  row-gap: 10px;
+}
+
+.shortcut-label,
+.time-label,
+.file-label {
+  justify-self: start;
+}
+
+.shortcut-button {
+  justify-self: start;
+  width: 133px;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.preset-button {
+  min-width: 56px;
+  width: 56px;
+  padding: 0 6px;
+  text-align: center;
+}
+
+.preset-button.is-selected {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+  text-shadow: 1px 1px #222;
+}
+
+.time-manual,
+.file-row,
+.settings-time-control {
+  align-items: stretch;
+  display: flex;
+  gap: 4px;
+}
+
+.time-input {
+  width: 58px;
+}
+
+.file-input {
+  width: 230px;
+}
+
+.browse-button {
+  min-width: 60px;
+}
+
+.spinner-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spinner-button {
+  font-size: 9px;
+  height: 10px;
+  line-height: 1;
+  min-height: 10px;
+  min-width: 16px;
+  padding: 0;
+  width: 16px;
+}
+
+.shortcut-button.is-capturing {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+  text-shadow: 1px 1px #222;
+}
+
+.shortcut-message {
+  color: #a80000;
+  margin: 8px 0 0 8px;
+  min-height: 13px;
+}
+
+.group-box-spacer {
+  flex: 1;
+  min-height: 120px;
+}
+
+.advanced-settings {
+  gap: 6px;
+  padding: 0;
+}
+
+.advanced-settings h2 {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 11px;
+  margin: 0;
+}
+
+.settings-placeholder {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-row {
+  align-items: center;
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+}
+
+.settings-time-input {
+  width: 60px;
+}
+
+.settings-number-input {
+  width: 72px;
+}
+
+.settings-text-input,
+.settings-number-input,
+.settings-row select {
+  width: 100%;
+}
+
+.settings-checkbox-control {
+  align-items: center;
+  display: inline-flex;
+  min-height: 13px;
+}
+
+.settings-actions {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+}
+
+.settings-actions button {
+  min-width: 96px;
+}
+
+.dialog-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.thin-status-bar {
+  min-height: 18px;
+}
+
+.thin-status-bar .status-bar-field {
+  padding: 1px 5px;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.footer-actions button {
+  min-width: 75px;
+}
+
+
+

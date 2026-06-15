@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:; img-src 'self' data:;"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punch98</title>
+    <link rel="stylesheet" href="../node_modules/98.css/dist/98.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="window window-shell" aria-label="Punch98 settings window">
+        <div class="title-bar">
+          <div class="title-bar-text">Punch98</div>
+          <div class="title-bar-controls">
+            <button aria-label="Help"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+
+        <div class="window-body shell-body">
+          <section class="dialog-panel" aria-label="Punch98 settings">
+            <menu role="tablist" aria-label="Settings sections">
+              <li
+                role="tab"
+                id="tab-shortcuts"
+                aria-selected="true"
+                aria-controls="settings-panel"
+                data-tab-target="shortcuts"
+              >
+                <a href="#settings-panel">Shortcuts</a>
+              </li>
+              <li
+                role="tab"
+                id="tab-time"
+                aria-selected="false"
+                aria-controls="settings-panel"
+                data-tab-target="time"
+              >
+                <a href="#settings-panel" tabindex="-1">Time</a>
+              </li>
+              <li
+                role="tab"
+                id="tab-file"
+                aria-selected="false"
+                aria-controls="settings-panel"
+                data-tab-target="file"
+              >
+                <a href="#settings-panel" tabindex="-1">File</a>
+              </li>
+              <li
+                role="tab"
+                id="tab-settings"
+                aria-selected="false"
+                aria-controls="settings-panel"
+                data-tab-target="settings"
+              >
+                <a href="#settings-panel" tabindex="-1">Settings</a>
+              </li>
+            </menu>
+
+            <div
+              class="window tab-frame"
+              id="settings-panel"
+              role="tabpanel"
+              aria-labelledby="tab-shortcuts"
+            >
+              <div class="window-body tab-frame-body">
+                <section
+                  id="panel-shortcuts"
+                  class="tab-panel is-active"
+                  aria-label="Shortcuts tab"
+                >
+                  <fieldset class="shortcut-group">
+                    <legend>Choose your hotkey</legend>
+                    <div class="shortcut-grid" aria-label="Shortcut settings">
+                      <label class="shortcut-label" for="shortcut-start">Start</label>
+                      <button
+                        id="shortcut-start"
+                        type="button"
+                        class="shortcut-button"
+                        data-shortcut-action="start"
+                      >
+                        Ctrl+Shift+Home
+                      </button>
+
+                      <label class="shortcut-label" for="shortcut-stop">Stop</label>
+                      <button
+                        id="shortcut-stop"
+                        type="button"
+                        class="shortcut-button"
+                        data-shortcut-action="stop"
+                      >
+                        Ctrl+Shift+End
+                      </button>
+
+                      <label class="shortcut-label" for="shortcut-cancel">Cancel</label>
+                      <button
+                        id="shortcut-cancel"
+                        type="button"
+                        class="shortcut-button"
+                        data-shortcut-action="cancel"
+                      >
+                        Ctrl+Alt+End
+                      </button>
+                    </div>
+                    <p
+                      class="shortcut-message"
+                      id="shortcut-message"
+                      aria-live="polite"
+                    ></p>
+                  </fieldset>
+                </section>
+
+                <section
+                  id="panel-time"
+                  class="tab-panel"
+                  aria-label="Time tab"
+                  hidden
+                >
+                  <fieldset class="time-group">
+                    <legend>Set threshold time</legend>
+                    <div class="time-grid" aria-label="Threshold time settings">
+                      <span class="time-label">Presets</span>
+                      <div class="preset-buttons" aria-label="Threshold presets">
+                        <button
+                          type="button"
+                          class="preset-button"
+                          data-preset-seconds="5"
+                        >
+                          00:05
+                        </button>
+                        <button
+                          type="button"
+                          class="preset-button is-selected"
+                          data-preset-seconds="300"
+                        >
+                          05:00
+                        </button>
+                        <button
+                          type="button"
+                          class="preset-button"
+                          data-preset-seconds="480"
+                        >
+                          08:00
+                        </button>
+                      </div>
+
+                      <label class="time-label" for="manual-threshold">Manual</label>
+                      <div class="time-manual">
+                        <input
+                          id="manual-threshold"
+                          class="time-input"
+                          type="text"
+                          inputmode="numeric"
+                          maxlength="5"
+                          spellcheck="false"
+                          value="05:00"
+                          aria-label="Manual threshold time"
+                        />
+                        <div class="spinner-buttons" aria-label="Time spinner controls">
+                          <button
+                            type="button"
+                            class="spinner-button"
+                            data-spin="up"
+                            aria-label="Increase time"
+                          >
+                            ▲
+                          </button>
+                          <button
+                            type="button"
+                            class="spinner-button"
+                            data-spin="down"
+                            aria-label="Decrease time"
+                          >
+                            ▼
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </section>
+
+                <section
+                  id="panel-file"
+                  class="tab-panel"
+                  aria-label="File tab"
+                  hidden
+                >
+                  <fieldset class="file-group">
+                    <legend>Choose your logfile</legend>
+                    <div class="file-grid" aria-label="Logfile settings">
+                      <label class="file-label" for="log-file-path">Log file</label>
+                      <div class="file-row">
+                        <input
+                          id="log-file-path"
+                          class="file-input"
+                          type="text"
+                          spellcheck="false"
+                          aria-label="Log file path"
+                        />
+                        <button type="button" class="browse-button" id="browse-log-file">
+                          Browse
+                        </button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </section>
+
+                <section
+                  id="panel-settings"
+                  class="tab-panel"
+                  aria-label="Settings tab"
+                  hidden
+                >
+                  <section class="advanced-settings">
+                    <h2>Advanced settings:</h2>
+                    <div
+                      class="field-border settings-placeholder"
+                      aria-label="Advanced settings placeholder"
+                    >
+                      <div class="settings-list">
+                        <div class="settings-row">
+                          <label for="settings-preset-1">Preset 1</label>
+                          <div class="settings-time-control">
+                            <input
+                              id="settings-preset-1"
+                              class="settings-time-input"
+                              type="text"
+                              inputmode="numeric"
+                              maxlength="5"
+                              spellcheck="false"
+                              data-settings-key="preset1"
+                            />
+                            <div class="spinner-buttons" aria-label="Preset 1 spinner controls">
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset1"
+                                data-spin="up"
+                                aria-label="Increase Preset 1"
+                              >
+                                ▲
+                              </button>
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset1"
+                                data-spin="down"
+                                aria-label="Decrease Preset 1"
+                              >
+                                ▼
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-preset-2">Preset 2</label>
+                          <div class="settings-time-control">
+                            <input
+                              id="settings-preset-2"
+                              class="settings-time-input"
+                              type="text"
+                              inputmode="numeric"
+                              maxlength="5"
+                              spellcheck="false"
+                              data-settings-key="preset2"
+                            />
+                            <div class="spinner-buttons" aria-label="Preset 2 spinner controls">
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset2"
+                                data-spin="up"
+                                aria-label="Increase Preset 2"
+                              >
+                                ▲
+                              </button>
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset2"
+                                data-spin="down"
+                                aria-label="Decrease Preset 2"
+                              >
+                                ▼
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-preset-3">Preset 3</label>
+                          <div class="settings-time-control">
+                            <input
+                              id="settings-preset-3"
+                              class="settings-time-input"
+                              type="text"
+                              inputmode="numeric"
+                              maxlength="5"
+                              spellcheck="false"
+                              data-settings-key="preset3"
+                            />
+                            <div class="spinner-buttons" aria-label="Preset 3 spinner controls">
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset3"
+                                data-spin="up"
+                                aria-label="Increase Preset 3"
+                              >
+                                ▲
+                              </button>
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="preset3"
+                                data-spin="down"
+                                aria-label="Decrease Preset 3"
+                              >
+                                ▼
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-enable-popup-notifications">Enable popup notifications</label>
+                          <div class="settings-checkbox-control">
+                            <input
+                              id="settings-enable-popup-notifications"
+                              type="checkbox"
+                              data-settings-key="popupNotificationsEnabled"
+                            />
+                            <label for="settings-enable-popup-notifications">Enabled</label>
+                          </div>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-popup-position">Popup position</label>
+                          <select id="settings-popup-position" data-settings-key="popupPosition">
+                            <option>Center</option>
+                            <option>Top-left</option>
+                            <option>Top-right</option>
+                            <option>Bottom-left</option>
+                            <option>Bottom-right</option>
+                          </select>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-popup-duration">Popup duration (ms)</label>
+                          <div class="settings-time-control">
+                            <input
+                              id="settings-popup-duration"
+                              class="settings-number-input"
+                              type="text"
+                              inputmode="numeric"
+                              maxlength="5"
+                              spellcheck="false"
+                              data-settings-key="popupDurationMs"
+                            />
+                            <div class="spinner-buttons" aria-label="Popup duration spinner controls">
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="popupDurationMs"
+                                data-spin="up"
+                                aria-label="Increase Popup duration"
+                              >
+                                ▲
+                              </button>
+                              <button
+                                type="button"
+                                class="spinner-button settings-spinner-button"
+                                data-settings-spin-key="popupDurationMs"
+                                data-spin="down"
+                                aria-label="Decrease Popup duration"
+                              >
+                                ▼
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-help-url">Help URL</label>
+                          <input
+                            id="settings-help-url"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="helpUrl"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-timer-started">Timer started</label>
+                          <input
+                            id="settings-timer-started"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="timerStarted"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-timer-stopped">Timer stopped</label>
+                          <input
+                            id="settings-timer-stopped"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="timerStopped"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-timer-already-running">Timer is already running</label>
+                          <input
+                            id="settings-timer-already-running"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="timerAlreadyRunning"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-timer-not-running">Timer is not running</label>
+                          <input
+                            id="settings-timer-not-running"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="timerNotRunning"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-threshold-not-reached">Recording threshold not reached</label>
+                          <input
+                            id="settings-threshold-not-reached"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="thresholdNotReached"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-entry-saved">Entry saved</label>
+                          <input
+                            id="settings-entry-saved"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="entrySaved"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-timer-canceled">Timer canceled</label>
+                          <input
+                            id="settings-timer-canceled"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="timerCanceled"
+                          />
+                        </div>
+                        <div class="settings-row">
+                          <label for="settings-unfinished-timer">Unfinished timer detected from HH:MM:SS</label>
+                          <input
+                            id="settings-unfinished-timer"
+                            class="settings-text-input"
+                            type="text"
+                            spellcheck="false"
+                            data-settings-key="unfinishedTimerDetected"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="settings-actions">
+                      <button type="button" id="restore-settings-defaults">Restore Defaults</button>
+                    </div>
+                  </section>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <footer class="dialog-footer">
+            <div class="status-bar thin-status-bar">
+              <p class="status-bar-field">Idle</p>
+            </div>
+            <div class="footer-actions">
+              <button type="button" id="ok-button">OK</button>
+              <button type="button" id="cancel-button">Cancel</button>
+              <button type="button" id="apply-button" disabled>Apply</button>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
